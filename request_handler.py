@@ -1,5 +1,6 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
+from views.post_request import get_all_posts, get_single_post
 
 from views.user import create_user, login_user
 
@@ -7,9 +8,9 @@ from views.user import create_user, login_user
 class HandleRequests(BaseHTTPRequestHandler):
     """Handles the requests to this server"""
 
-    def parse_url(self):
+    def parse_url(self,path):
         """Parse the url into the resource and id"""
-        path_params = self.path.split('/')
+        path_params = path.split('/')
         resource = path_params[1]
         if '?' in resource:
             param = resource.split('?')[1]
@@ -76,7 +77,26 @@ class HandleRequests(BaseHTTPRequestHandler):
     def do_DELETE(self):
         """Handle DELETE Requests"""
         pass
+    
+    
+    def do_GET(self):
+        self._set_headers(200)
 
+        response = {}
+
+        # Parse URL and store entire tuple in a variable
+        parsed = self.parse_url(self.path)
+
+        if len(parsed) == 2:
+            ( resource, id ) = parsed
+
+            if resource == "posts":
+                if id is not None:
+                    response = f"{get_single_post(id)}"
+                else:
+                    response = f"{get_all_posts()}"
+        
+        self.wfile.write(response.encode())
 
 def main():
     """Starts the server on port 8088 using the HandleRequests class
