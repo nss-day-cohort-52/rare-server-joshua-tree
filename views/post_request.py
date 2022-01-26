@@ -80,6 +80,7 @@ def get_single_post(id):
             p.image_url,
             p.content,
             p.approved,
+            FROM posts p 
             c.label category_label,
             user.first_name user_first_name,
             user.last_name user_last_name,
