@@ -1,13 +1,7 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
-<<<<<<< HEAD
 from views.category_request import delete_category, get_all_categories, get_single_category
 from views.post_request import delete_post, get_all_posts, get_single_post
-
-=======
-from views.category_request import get_all_categories, get_single_category
-from views.post_request import get_all_posts, get_single_post
->>>>>>> main
 from views.user import create_user, login_user
 
 
@@ -76,14 +70,7 @@ class HandleRequests(BaseHTTPRequestHandler):
         """Handles PUT requests to the server"""
         pass
 
-<<<<<<< HEAD
     
-=======
-    def do_DELETE(self):
-        """Handle DELETE Requests"""
-        pass
-
->>>>>>> main
     def do_GET(self):
         self._set_headers(200)
 
