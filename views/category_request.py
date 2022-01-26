@@ -17,7 +17,8 @@ def get_all_categories():
         SELECT
             c.id,
             c.label
-            FROM categories c    
+            FROM categories c 
+            ORDER BY label ASC;   
         """)
 
         categories = []

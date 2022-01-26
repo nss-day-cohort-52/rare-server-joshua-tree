@@ -23,8 +23,10 @@ def get_all_posts():
             p.image_url,
             p.content,
             p.approved
-            FROM posts p    
+            FROM posts p
+            ORDER BY publication_date DESC;      
         """)
+
 
         posts = []
 
