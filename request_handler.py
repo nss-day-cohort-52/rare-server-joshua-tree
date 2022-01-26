@@ -1,7 +1,7 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
+from views.category_request import get_all_categories, get_single_category
 from views.post_request import get_all_posts, get_single_post
-
 from views.user import create_user, login_user
 
 
@@ -10,7 +10,7 @@ class HandleRequests(BaseHTTPRequestHandler):
 
     def parse_url(self, path):
         """Parse the url into the resource and id"""
-        path_params = path.split('/')
+        path_params = self.path.split('/')
         resource = path_params[1]
         if '?' in resource:
             param = resource.split('?')[1]
@@ -56,7 +56,8 @@ class HandleRequests(BaseHTTPRequestHandler):
         content_len = int(self.headers.get('content-length', 0))
         post_body = json.loads(self.rfile.read(content_len))
         response = ''
-        resource, _ = self.parse_url(self.path)
+
+        (resource, _) = self.parse_url(self.path)
 
         if resource == 'login':
             response = login_user(post_body)
@@ -90,6 +91,12 @@ class HandleRequests(BaseHTTPRequestHandler):
                 else:
                     response = f"{get_all_posts()}"
 
+            if resource == "categories":
+                if id is not None:
+                    response = f"{get_single_category(id)}"
+                else:
+                    response = f"{get_all_categories()}"
+        
         self.wfile.write(response.encode())
 
 
