@@ -116,29 +116,66 @@ DROP TABLE POSTS
 
 INSERT INTO Tags ('label') VALUES ('JavaScript');
 INSERT INTO Reactions ('label', 'image_url') VALUES ('happy', 'https://pngtree.com/so/happy');
-INSERT INTO Posts ('user_id', 'category_id', 'title', 'publication_date', 'image_url', 'content', 'approved') VALUES ( 1 , 1, 'Guest', '10/12/2019', '    
-    
-def delete_post(id):
-    with sqlite3.connect("./db.sqlite3") as conn:
-        db_cursor = conn.cursor()
+INSERT INTO Posts ('user_id', 'category_id', 'title', 'publication_date', 'image_url', 'content', 'approved') VALUES ( 1 , 1, 'Guest', 'Septmeber 10', 'https://pngtree.com/so/happy', 'Random', 0);
+INSERT INTO Subscriptions ('follower_id', 'author_id', 'created_on') VALUES (1, 2, '2-20-2020')
 
-        db_cursor.execute("""
-        DELETE FROM posts
-        WHERE id = ?
-        """, (id, ))
-', 'Random', 0);
-INSERT INTO Posts ('user_id', 'category_id', 'title', 'publication_date', 'image_url', 'content', 'approved') VALUES ( 1 , 2, 'Soccer', '10/14/2019', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3CdKdmMiF-696SBkL_d0mbIRN2qlkufI8Mg&usqp=CAU', 'About Sports', 1);
-INSERT INTO Posts ('user_id', 'category_id', 'title', 'publication_date', 'image_url', 'content', 'approved') VALUES ( 1 , 2, 'Drama!', '10/15/2019', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUQPIzkKTSeaQEQbqmcKeMf8kQ6ict-JuqAQ&usqp=CAU', 'About Drama', 1);
+CREATE TABLE "Posts" (
+  "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+  "user_id" INTEGER,
+  "category_id" INTEGER,
+  "title" varchar,
+  "publication_date" date,
+  "image_url" varchar,
+  "content" varchar,
+  "approved" bit
+);
+
+INSERT INTO Posts ('user_id', 'category_id', 'title', 'publication_date', 'image_url', 'content', 'approved') VALUES ( 1 , 1, 'Guest', '10/12/2019', 'https://pngtree.com/so/happy', 'Random', 0);
+INSERT INTO Posts ('user_id', 'category_id', 'title', 'publication_date', 'image_url', 'content', 'approved') VALUES ( 1 , 2, 'Soccer', '10/14/2019', 'https://pngtree.com/so/happy', 'About Sports', 1);
+INSERT INTO Posts ('user_id', 'category_id', 'title', 'publication_date', 'image_url', 'content', 'approved') VALUES ( 1 , 2, 'Drama!', '10/15/2019', 'https://pngtree.com/so/happy', 'About Drama', 1);
 
 
-SELECT
-            p.id,
-            p.user_id,
-            p.category_id,
-            p.title,
-            p.publication_date,
-            p.image_url,
-            p.content,
-            p.approved
-            FROM posts p
-            ORDER BY publication_date ASC;  
+
+
+
+
+
+INSERT INTO Users (first_name, last_name, email, bio, username, password, created_on, active)
+VALUES ('Misty', "Bus", 'misty@bus.com', 'chronically tardy student', 'mistybus', 'password', CURRENT_TIMESTAMP, 1)
+
+INSERT INTO Users (first_name, last_name, email, bio, username, password, created_on, active)
+VALUES ('Frank N.', "Stein", 'frankn@stein.com', 'A monster of an author', 'franknstein', 'password', CURRENT_TIMESTAMP, 1)
+
+INSERT INTO Users (first_name, last_name, email, bio, username, password, created_on, active)
+VALUES ('Ima', 'Cannibal', 'ima@cannibal.com', 'A voracious reader and author. Always hungry for more!', 'cannibal', 'password', CURRENT_TIMESTAMP, 1)
+
+INSERT INTO Users (first_name, last_name, email, bio, username, password, created_on, active)
+VALUES ('Sandy', 'Cheeks', 'sandy@cheeks.com', 'Retired and living the dream life on the beach!', 'sandy', 'password', CURRENT_TIMESTAMP, 1)
+
+INSERT INTO Categories (label)
+VALUES ('Fiction')
+
+INSERT INTO Categories (label)
+VALUES ('Biography')
+
+INSERT INTO Categories (label)
+VALUES ('Self Improvement')
+
+UPDATE Posts
+SET user_id = 2,
+category = 2,
+title = "Long Walk Home",
+publication_date = "2022-09-10",
+image_url = "https://bestlifeonline.com/wp-content/uploads/sites/3/2019/12/happy-woman-in-nature-at-sunset.jpg",
+content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+WHERE id IS 1;
+
+INSERT INTO Posts (user_id, category_id, title, publication_date, image_url, content)
+VALUES (3, 3, 'My Life With Igor', CURRENT_TIMESTAMP, 'https://www.intofilm.org/intofilm-production/scaledcropped/970x546https%3A/s3-eu-west-1.amazonaws.com/images.cdn.filmclub.org/film__4502-igor--hi_res-c5cc097d.jpg/film__4502-igor--hi_res-c5cc097d.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
+
+INSERT INTO Posts (user_id, category_id, title, publication_date, image_url, content)
+VALUES (4, 4, 'How To Serve Your Fellow Man', CURRENT_TIMESTAMP, 'https://mediaproxy.salon.com/width/1200/https://media.salon.com/2012/06/cannibal_rect.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
+
+INSERT INTO Posts (user_id, category_id, title, publication_date, image_url, content)
+VALUES (5, 2, 'Sitting on the Beach', CURRENT_TIMESTAMP, 'https://www.abc.net.au/news/image/10391728-16x9-940x529.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
+

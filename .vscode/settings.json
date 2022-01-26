@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "sqltools.connections": [
         {
             "previewLimit": 50,
@@ -9,3 +10,14 @@
     ],
     "sqltools.useNodeRuntime": true
 }
+=======
+	"sqltools.connections": [
+		{
+			"previewLimit": 50,
+			"driver": "SQLite",
+			"name": "rare-server-joshua-tree",
+			"database": "db.sqlite3"
+		}
+	]
+}
+>>>>>>> main

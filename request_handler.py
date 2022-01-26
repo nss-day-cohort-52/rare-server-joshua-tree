@@ -1,17 +1,22 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
+<<<<<<< HEAD
 from views.category_request import delete_category, get_all_categories, get_single_category
 from views.post_request import delete_post, get_all_posts, get_single_post
 
+=======
+from views.category_request import get_all_categories, get_single_category
+from views.post_request import get_all_posts, get_single_post
+>>>>>>> main
 from views.user import create_user, login_user
 
 
 class HandleRequests(BaseHTTPRequestHandler):
     """Handles the requests to this server"""
 
-    def parse_url(self,path):
+    def parse_url(self, path):
         """Parse the url into the resource and id"""
-        path_params = path.split('/')
+        path_params = self.path.split('/')
         resource = path_params[1]
         if '?' in resource:
             param = resource.split('?')[1]
@@ -51,13 +56,13 @@ class HandleRequests(BaseHTTPRequestHandler):
                          'X-Requested-With, Content-Type, Accept')
         self.end_headers()
 
-
     def do_POST(self):
         """Make a post request to the server"""
         self._set_headers(201)
         content_len = int(self.headers.get('content-length', 0))
         post_body = json.loads(self.rfile.read(content_len))
         response = ''
+
         (resource, _) = self.parse_url(self.path)
 
         if resource == 'login':
@@ -71,7 +76,14 @@ class HandleRequests(BaseHTTPRequestHandler):
         """Handles PUT requests to the server"""
         pass
 
+<<<<<<< HEAD
     
+=======
+    def do_DELETE(self):
+        """Handle DELETE Requests"""
+        pass
+
+>>>>>>> main
     def do_GET(self):
         self._set_headers(200)
 
@@ -81,13 +93,14 @@ class HandleRequests(BaseHTTPRequestHandler):
         parsed = self.parse_url(self.path)
 
         if len(parsed) == 2:
-            ( resource, id ) = parsed
+            (resource, id) = parsed
 
             if resource == "posts":
                 if id is not None:
                     response = f"{get_single_post(id)}"
                 else:
                     response = f"{get_all_posts()}"
+
             if resource == "categories":
                 if id is not None:
                     response = f"{get_single_category(id)}"
@@ -113,6 +126,7 @@ class HandleRequests(BaseHTTPRequestHandler):
 
     # Encode the new animal and send in response
         self.wfile.write("".encode())
+
 
 
 def main():
