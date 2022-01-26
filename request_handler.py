@@ -2,16 +2,15 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 from views.category_request import get_all_categories, get_single_category
 from views.post_request import get_all_posts, get_single_post
-
 from views.user import create_user, login_user
 
 
 class HandleRequests(BaseHTTPRequestHandler):
     """Handles the requests to this server"""
 
-    def parse_url(self,path):
+    def parse_url(self, path):
         """Parse the url into the resource and id"""
-        path_params = path.split('/')
+        path_params = self.path.split('/')
         resource = path_params[1]
         if '?' in resource:
             param = resource.split('?')[1]
