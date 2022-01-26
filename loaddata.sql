@@ -88,6 +88,7 @@ INSERT INTO Categories ('label') VALUES ('News');
 INSERT INTO Tags ('label') VALUES ('JavaScript');
 INSERT INTO Reactions ('label', 'image_url') VALUES ('happy', 'https://pngtree.com/so/happy');
 INSERT INTO Posts ('user_id', 'category_id', 'title', 'publication_date', 'image_url', 'content', 'approved') VALUES ( 1 , 1, 'Guest', 'Septmeber 10', 'https://pngtree.com/so/happy', 'Random', 0);
+INSERT INTO Subscriptions ('follower_id', 'author_id', 'created_on') VALUES (1, 2, '2-20-2020')
 
 CREATE TABLE "Posts" (
   "id" INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -99,3 +100,4 @@ CREATE TABLE "Posts" (
   "content" varchar,
   "approved" bit
 );
+
