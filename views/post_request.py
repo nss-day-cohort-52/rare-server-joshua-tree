@@ -29,7 +29,7 @@ def get_all_posts():
             u.bio user_bio,
             u.username user_username,
             u.password user_password,
-            u.profile_image_url user_profile_image_url,
+            u.profile_image_url user_user_profile_image_url,
             u.created_on user_created_on,
             u.active user_active
             FROM Posts p
@@ -50,9 +50,8 @@ def get_all_posts():
             post = Post(row['id'], row['user_id'], row['category_id'],
                             row['title'], row['publication_date'], row['image_url'], row['content'], row['approved'] )
 
-            posts.append(post.__dict__)
             
-            user = User(row['id'], row['user_first_name'], row['user_last_name'], row['user_email'], row['user_bio'], row['user_username'], row['user_password'], row['user_profile_image_url'], row['user_created_on'], row['user_active'])
+            user = User(row['id'], row['user_first_name'], row['user_last_name'], row['user_email'], row['user_bio'], row['user_username'], row['user_password'], row['user_user_profile_image_url'], row['user_created_on'], row['user_active'])
             
             post.user = user.__dict__
 
@@ -60,6 +59,7 @@ def get_all_posts():
             
             post.category = category.__dict__
             
+            posts.append(post.__dict__)
             
     return json.dumps(posts)
 

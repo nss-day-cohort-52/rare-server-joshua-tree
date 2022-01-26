@@ -163,32 +163,3 @@ VALUES (4, 4, 'How To Serve Your Fellow Man', CURRENT_TIMESTAMP, 'https://mediap
 INSERT INTO Posts (user_id, category_id, title, publication_date, image_url, content)
 VALUES (5, 2, 'Sitting on the Beach', CURRENT_TIMESTAMP, 'https://www.abc.net.au/news/image/10391728-16x9-940x529.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
 
-
-
-
-
- SELECT
-            p.id,
-            p.user_id,
-            p.category_id,
-            p.title,
-            p.publication_date,
-            p.image_url,
-            p.content,
-            p.approved,
-            c.label category_label,
-            u.first_name user_first_name,
-            u.last_name user_last_name,
-            u.email user_email,
-            u.bio user_bio,
-            u.username user_username,
-            u.password user_password,
-            u.profile_image_url user_profile_image_url,
-            u.created_on user_created_on,
-            u.active user_active
-            FROM Posts p
-            JOIN Categories c
-                ON c.id = p.category_id
-            AND Users u
-                ON u.id = p.user_id
-            ORDER BY p.publication_date DESC
