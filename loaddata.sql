@@ -93,3 +93,76 @@ INSERT INTO Tags ('label') VALUES ('JavaScript');
 INSERT INTO Reactions ('label', 'image_url') VALUES ('happy', 'https://pngtree.com/so/happy');
 INSERT INTO Posts ('user_id', 'category_id', 'title', 'publication_date', 'image_url', 'content', 'approved') VALUES ( 1 , 1, 'Guest', 'Septmeber 10', 'https://pngtree.com/so/happy', 'Random', 0);
 
+
+
+
+
+
+INSERT INTO Users (first_name, last_name, email, bio, username, password, created_on, active)
+VALUES ('Misty', "Bus", 'misty@bus.com', 'chronically tardy student', 'mistybus', 'password', CURRENT_TIMESTAMP, 1)
+
+INSERT INTO Users (first_name, last_name, email, bio, username, password, created_on, active)
+VALUES ('Frank N.', "Stein", 'frankn@stein.com', 'A monster of an author', 'franknstein', 'password', CURRENT_TIMESTAMP, 1)
+
+INSERT INTO Users (first_name, last_name, email, bio, username, password, created_on, active)
+VALUES ('Ima', 'Cannibal', 'ima@cannibal.com', 'A voracious reader and author. Always hungry for more!', 'cannibal', 'password', CURRENT_TIMESTAMP, 1)
+
+INSERT INTO Users (first_name, last_name, email, bio, username, password, created_on, active)
+VALUES ('Sandy', 'Cheeks', 'sandy@cheeks.com', 'Retired and living the dream life on the beach!', 'sandy', 'password', CURRENT_TIMESTAMP, 1)
+
+INSERT INTO Categories (label)
+VALUES ('Fiction')
+
+INSERT INTO Categories (label)
+VALUES ('Biography')
+
+INSERT INTO Categories (label)
+VALUES ('Self Improvement')
+
+UPDATE Posts
+SET user_id = 2,
+category = 2,
+title = "Long Walk Home",
+publication_date = "2022-09-10",
+image_url = "https://bestlifeonline.com/wp-content/uploads/sites/3/2019/12/happy-woman-in-nature-at-sunset.jpg",
+content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+WHERE id IS 1;
+
+INSERT INTO Posts (user_id, category_id, title, publication_date, image_url, content)
+VALUES (3, 3, 'My Life With Igor', CURRENT_TIMESTAMP, 'https://www.intofilm.org/intofilm-production/scaledcropped/970x546https%3A/s3-eu-west-1.amazonaws.com/images.cdn.filmclub.org/film__4502-igor--hi_res-c5cc097d.jpg/film__4502-igor--hi_res-c5cc097d.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
+
+INSERT INTO Posts (user_id, category_id, title, publication_date, image_url, content)
+VALUES (4, 4, 'How To Serve Your Fellow Man', CURRENT_TIMESTAMP, 'https://mediaproxy.salon.com/width/1200/https://media.salon.com/2012/06/cannibal_rect.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
+
+INSERT INTO Posts (user_id, category_id, title, publication_date, image_url, content)
+VALUES (5, 2, 'Sitting on the Beach', CURRENT_TIMESTAMP, 'https://www.abc.net.au/news/image/10391728-16x9-940x529.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
+
+
+
+
+
+ SELECT
+            p.id,
+            p.user_id,
+            p.category_id,
+            p.title,
+            p.publication_date,
+            p.image_url,
+            p.content,
+            p.approved,
+            c.label category_label,
+            u.first_name user_first_name,
+            u.last_name user_last_name,
+            u.email user_email,
+            u.bio user_bio,
+            u.username user_username,
+            u.password user_password,
+            u.profile_image_url user_profile_image_url,
+            u.created_on user_created_on,
+            u.active user_active
+            FROM Posts p
+            JOIN Categories c
+                ON c.id = p.category_id
+            AND Users u
+                ON u.id = p.user_id
+            ORDER BY p.publication_date DESC

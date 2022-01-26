@@ -1,6 +1,5 @@
 import sqlite3
 import json
-import models 
 from datetime import datetime
 
 def login_user(user):
@@ -18,10 +17,10 @@ def login_user(user):
         db_cursor = conn.cursor()
 
         db_cursor.execute("""
-            select id, username
-            from Users
-            where username = ?
-            and password = ?
+            SELECT id, username
+            FROM Users
+            WHERE username = ?
+            AND password = ?
         """, (user['username'], user['password']))
 
         user_from_db = db_cursor.fetchone()
