@@ -40,6 +40,7 @@ def get_all_posts():
             ORDER BY p.publication_date DESC
         """)
 
+
         posts = []
 
         dataset = db_cursor.fetchall()
