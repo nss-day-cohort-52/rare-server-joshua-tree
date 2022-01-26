@@ -86,6 +86,8 @@ CREATE TABLE "Categories" (
 
 DROP TABLE "Categories"
 
+
+
 INSERT INTO Categories ('label') VALUES ('News');
 INSERT INTO Categories ('label') VALUES ('Sports');
 INSERT INTO Categories ('label') VALUES ('Horror');
@@ -114,9 +116,19 @@ DROP TABLE POSTS
 
 INSERT INTO Tags ('label') VALUES ('JavaScript');
 INSERT INTO Reactions ('label', 'image_url') VALUES ('happy', 'https://pngtree.com/so/happy');
-INSERT INTO Posts ('user_id', 'category_id', 'title', 'publication_date', 'image_url', 'content', 'approved') VALUES ( 1 , 1, 'Guest', '10/12/2019', 'https://pngtree.com/so/happy', 'Random', 0);
-INSERT INTO Posts ('user_id', 'category_id', 'title', 'publication_date', 'image_url', 'content', 'approved') VALUES ( 1 , 2, 'Soccer', '10/14/2019', 'https://pngtree.com/so/happy', 'About Sports', 1);
-INSERT INTO Posts ('user_id', 'category_id', 'title', 'publication_date', 'image_url', 'content', 'approved') VALUES ( 1 , 2, 'Drama!', '10/15/2019', 'https://pngtree.com/so/happy', 'About Drama', 1);
+INSERT INTO Posts ('user_id', 'category_id', 'title', 'publication_date', 'image_url', 'content', 'approved') VALUES ( 1 , 1, 'Guest', '10/12/2019', '    
+    
+def delete_post(id):
+    with sqlite3.connect("./db.sqlite3") as conn:
+        db_cursor = conn.cursor()
+
+        db_cursor.execute("""
+        DELETE FROM posts
+        WHERE id = ?
+        """, (id, ))
+', 'Random', 0);
+INSERT INTO Posts ('user_id', 'category_id', 'title', 'publication_date', 'image_url', 'content', 'approved') VALUES ( 1 , 2, 'Soccer', '10/14/2019', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3CdKdmMiF-696SBkL_d0mbIRN2qlkufI8Mg&usqp=CAU', 'About Sports', 1);
+INSERT INTO Posts ('user_id', 'category_id', 'title', 'publication_date', 'image_url', 'content', 'approved') VALUES ( 1 , 2, 'Drama!', '10/15/2019', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUQPIzkKTSeaQEQbqmcKeMf8kQ6ict-JuqAQ&usqp=CAU', 'About Drama', 1);
 
 
 SELECT

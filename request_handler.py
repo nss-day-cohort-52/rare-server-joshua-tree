@@ -1,6 +1,6 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
-from views.category_request import get_all_categories, get_single_category
+from views.category_request import delete_category, get_all_categories, get_single_category
 from views.post_request import delete_post, get_all_posts, get_single_post
 
 from views.user import create_user, login_user
@@ -107,6 +107,8 @@ class HandleRequests(BaseHTTPRequestHandler):
     # Delete a single animal from the list
         if resource == "posts":
             delete_post(id)
+        if resource == "categories":
+            delete_category(id)
         
 
     # Encode the new animal and send in response
