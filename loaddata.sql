@@ -91,5 +91,5 @@ INSERT INTO Categories ('label') VALUES ('Sports');
 
 INSERT INTO Tags ('label') VALUES ('JavaScript');
 INSERT INTO Reactions ('label', 'image_url') VALUES ('happy', 'https://pngtree.com/so/happy');
-INSERT INTO Posts ('user_id', 'category_id', 'title', 'publication_date', 'image_url', 'content', 'approved') VALUES ( 1 , 1, 'Guest', 'Septmeber 10', 'https://pngtree.com/so/happy', 'Random', 0);
-
+INSERT INTO Posts ('user_id', 'category_id', 'title', 'publication_date', 'image_url', 'content', 'approved') VALUES ( 1 , 1, 'Guest', 'Septmeber 10', 'https://wl-brightside.cf.tsp.li/resize/728x/jpg/8ef/8b2/825e675c6cbf1b9e44261600d7.jpg', 'Random', 0);
+INSERT INTO Posts ('user_id', 'category_id', 'title', 'publication_date', 'image_url', 'content', 'approved') VALUES ( 1 , 1, 'Guest', 'Septmeber 12', 'https://media.springernature.com/relative-r300-703_m1050/springer-static/image/art%3A10.1038%2F528452a/MediaObjects/41586_2015_Article_BF528452a_Figg_HTML.jpg?as=webp', 'Random', 0);
