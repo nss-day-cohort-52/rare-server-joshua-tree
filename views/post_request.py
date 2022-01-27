@@ -114,6 +114,16 @@ def get_single_post(id):
 
         return json.dumps(post.__dict__)
     
+    
+def delete_post(id):
+    with sqlite3.connect("./db.sqlite3") as conn:
+        db_cursor = conn.cursor()
+
+        db_cursor.execute("""
+        DELETE FROM posts
+        WHERE id = ?
+        """, (id, ))
+        
 def get_posts_by_current_user(user_id):
     # Open a connection to the database
     with sqlite3.connect("./db.sqlite3") as conn:
