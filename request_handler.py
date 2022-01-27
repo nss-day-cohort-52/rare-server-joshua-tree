@@ -1,6 +1,6 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
-from views.category_request import get_all_categories, get_single_category
+from views.category_request import add_category, get_all_categories, get_single_category
 from views.post_request import get_all_posts, get_single_post, get_posts_by_current_user
 from views.user_request import create_user, login_user, get_all_users, get_single_user
 
@@ -63,6 +63,8 @@ class HandleRequests(BaseHTTPRequestHandler):
             response = login_user(post_body)
         if resource == 'register':
             response = create_user(post_body)
+        if resource == 'category':
+            response = add_category(post_body)
 
         self.wfile.write(response.encode())
 
