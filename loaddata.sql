@@ -86,6 +86,8 @@ CREATE TABLE "Categories" (
 
 DROP TABLE "Categories"
 
+
+
 INSERT INTO Categories ('label') VALUES ('News');
 INSERT INTO Categories ('label') VALUES ('Sports');
 INSERT INTO Categories ('label') VALUES ('Horror');
@@ -110,6 +112,7 @@ INSERT INTO Categories ('label') VALUES ('Drama');
 
 
 DROP TABLE POSTS
+DROP TABLE USERS
 
 
 INSERT INTO Tags ('label') VALUES ('JavaScript');
@@ -125,7 +128,10 @@ INSERT INTO Posts ('user_id', 'category_id', 'title', 'publication_date', 'image
 
 
 INSERT INTO Users (first_name, last_name, email, bio, username, password, created_on, active)
-VALUES ('Misty', "Bus", 'misty@bus.com', 'chronically tardy student', 'mistybus', 'password', CURRENT_TIMESTAMP, 1);
+VALUES ('Shelby', "Rossi", 'rossi@shelby.com', 'random', 'shelbyrossi', 'password', CURRENT_TIMESTAMP, 1);
+
+INSERT INTO Users (first_name, last_name, email, bio, username, password, created_on, active)
+VALUES ('Misty', "Bus", 'misty@bus.com', 'chronically tardy student', 'mistybus', 'password', CURRENT_TIMESTAMP, 6);
 
 INSERT INTO Users (first_name, last_name, email, bio, username, password, created_on, active)
 VALUES ('Frank N.', "Stein", 'frankn@stein.com', 'A monster of an author', 'franknstein', 'password', CURRENT_TIMESTAMP, 1);
@@ -162,8 +168,6 @@ VALUES (4, 4, 'How To Serve Your Fellow Man', CURRENT_TIMESTAMP, 'https://mediap
 
 INSERT INTO Posts (user_id, category_id, title, publication_date, image_url, content)
 VALUES (5, 2, 'Sitting on the Beach', CURRENT_TIMESTAMP, 'https://www.abc.net.au/news/image/10391728-16x9-940x529.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
-
-
 
 
 INSERT INTO Posts (user_id, category_id, title, publication_date, image_url, content)

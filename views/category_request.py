@@ -81,3 +81,13 @@ def add_category(new_category):
         new_category['id'] = id
         
     return json.dumps(new_category)
+    
+    
+def delete_category(id):
+    with sqlite3.connect("./db.sqlite3") as conn:
+        db_cursor = conn.cursor()
+
+        db_cursor.execute("""
+        DELETE FROM categories
+        WHERE id = ?
+        """, (id, ))
