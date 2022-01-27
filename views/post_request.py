@@ -123,6 +123,19 @@ def create_post(new_post):
         db_cursor = conn.cursor()
 
         db_cursor.execute("""
+            SELECT 
+                p.id,
+                p.user_id,
+                p.category_id,
+                p.title,
+                p.publication_date,
+                p.image_url,
+                p.content,
+                p.approved,
+                c.label category_label
+                FROM Posts p
+                JOIN Categories c
+                    ON c.id = p.category_id
             INSERT INTO Posts
                 ( user_id, category_id, title, publication_date, image_url, content, approved )
             VALUES
