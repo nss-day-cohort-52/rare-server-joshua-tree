@@ -163,3 +163,5 @@ VALUES (4, 4, 'How To Serve Your Fellow Man', CURRENT_TIMESTAMP, 'https://mediap
 INSERT INTO Posts (user_id, category_id, title, publication_date, image_url, content)
 VALUES (5, 2, 'Sitting on the Beach', CURRENT_TIMESTAMP, 'https://www.abc.net.au/news/image/10391728-16x9-940x529.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
 
+INSERT INTO Posts (user_id, category_id, title, publication_date, image_url, content, approved)
+VALUES (1, 5, 'lovely night', CURRENT_TIMESTAMP, ' https://i.pinimg.com/236x/1f/42/fa/1f42faffb3042d44955133e730320eea--night-sky-stars-night-skies.jpg', 'Walking away', 1)

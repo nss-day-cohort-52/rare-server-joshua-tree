@@ -1,7 +1,7 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 from views.category_request import get_all_categories, get_single_category
-from views.post_request import get_all_posts, get_single_post
+from views.post_request import get_all_posts, get_single_post, create_post
 from views.user import create_user, login_user
 
 
@@ -50,7 +50,6 @@ class HandleRequests(BaseHTTPRequestHandler):
                          'X-Requested-With, Content-Type, Accept')
         self.end_headers()
 
-
     def do_POST(self):
         """Make a post request to the server"""
         self._set_headers(201)
@@ -58,11 +57,13 @@ class HandleRequests(BaseHTTPRequestHandler):
         post_body = json.loads(self.rfile.read(content_len))
         response = ''
         (resource, _) = self.parse_url(self.path)
-
+        print(resource)
         if resource == 'login':
             response = login_user(post_body)
         if resource == 'register':
             response = create_user(post_body)
+        if resource == 'create_post':
+            response = create_post(post_body)
 
         self.wfile.write(response.encode())
 
@@ -73,8 +74,7 @@ class HandleRequests(BaseHTTPRequestHandler):
     def do_DELETE(self):
         """Handle DELETE Requests"""
         pass
-    
-    
+
     def do_GET(self):
         self._set_headers(200)
 
@@ -84,7 +84,7 @@ class HandleRequests(BaseHTTPRequestHandler):
         parsed = self.parse_url(self.path)
 
         if len(parsed) == 2:
-            ( resource, id ) = parsed
+            (resource, id) = parsed
 
             if resource == "posts":
                 if id is not None:
@@ -96,8 +96,9 @@ class HandleRequests(BaseHTTPRequestHandler):
                     response = f"{get_single_category(id)}"
                 else:
                     response = f"{get_all_categories()}"
-        
+
         self.wfile.write(response.encode())
+
 
 def main():
     """Starts the server on port 8088 using the HandleRequests class
