@@ -1,8 +1,8 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
-from views.category_request import delete_category, get_all_categories, get_single_category
-from views.post_request import delete_post, get_all_posts, get_single_post
-from views.user import create_user, login_user
+from views.category_request import get_all_categories, get_single_category
+from views.post_request import get_all_posts, get_single_post, get_posts_by_current_user
+from views.user_request import create_user, login_user, get_all_users, get_single_user
 
 
 class HandleRequests(BaseHTTPRequestHandler):
@@ -92,6 +92,20 @@ class HandleRequests(BaseHTTPRequestHandler):
                     response = f"{get_single_category(id)}"
                 else:
                     response = f"{get_all_categories()}"
+            if resource == "users":
+                if id is not None:
+                    response = f"{get_single_user(id)}"
+                else:
+                    response = f"{get_all_users()}"
+                    
+        elif len(parsed) == 3:
+            ( resource, key, value ) = parsed
+
+            # Is the resource `customers` and was there a
+            # query parameter that specified the customer
+            # email as a filtering value?
+            if key == "user_id" and resource == "posts":
+                response = get_posts_by_current_user(value)
         
         self.wfile.write(response.encode())
         
