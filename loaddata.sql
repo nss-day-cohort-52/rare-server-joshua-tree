@@ -109,7 +109,7 @@ INSERT INTO Categories ('label') VALUES ('Drama');
 
 
 
-DROP TABLE POSTS
+DROP TABLE USERS
 
 
 INSERT INTO Tags ('label') VALUES ('JavaScript');
