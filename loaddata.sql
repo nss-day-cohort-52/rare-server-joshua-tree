@@ -127,16 +127,16 @@ INSERT INTO Posts ('user_id', 'category_id', 'title', 'publication_date', 'image
 
 
 INSERT INTO Users (first_name, last_name, email, bio, username, password, created_on, active)
-VALUES ('Misty', "Bus", 'misty@bus.com', 'chronically tardy student', 'mistybus', 'password', CURRENT_TIMESTAMP, 1)
+VALUES ('Misty', "Bus", 'misty@bus.com', 'chronically tardy student', 'mistybus', 'password', CURRENT_TIMESTAMP, 1);
 
 INSERT INTO Users (first_name, last_name, email, bio, username, password, created_on, active)
-VALUES ('Frank N.', "Stein", 'frankn@stein.com', 'A monster of an author', 'franknstein', 'password', CURRENT_TIMESTAMP, 1)
+VALUES ('Frank N.', "Stein", 'frankn@stein.com', 'A monster of an author', 'franknstein', 'password', CURRENT_TIMESTAMP, 1);
 
 INSERT INTO Users (first_name, last_name, email, bio, username, password, created_on, active)
-VALUES ('Ima', 'Cannibal', 'ima@cannibal.com', 'A voracious reader and author. Always hungry for more!', 'cannibal', 'password', CURRENT_TIMESTAMP, 1)
+VALUES ('Ima', 'Cannibal', 'ima@cannibal.com', 'A voracious reader and author. Always hungry for more!', 'cannibal', 'password', CURRENT_TIMESTAMP, 1);
 
 INSERT INTO Users (first_name, last_name, email, bio, username, password, created_on, active)
-VALUES ('Sandy', 'Cheeks', 'sandy@cheeks.com', 'Retired and living the dream life on the beach!', 'sandy', 'password', CURRENT_TIMESTAMP, 1)
+VALUES ('Sandy', 'Cheeks', 'sandy@cheeks.com', 'Retired and living the dream life on the beach!', 'sandy', 'password', CURRENT_TIMESTAMP, 1);
 
 INSERT INTO Categories (label)
 VALUES ('Fiction')
