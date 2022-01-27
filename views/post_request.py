@@ -123,6 +123,7 @@ def delete_post(id):
         DELETE FROM posts
         WHERE id = ?
         """, (id, ))
+        
 def get_posts_by_current_user(user_id):
     # Open a connection to the database
     with sqlite3.connect("./db.sqlite3") as conn:
