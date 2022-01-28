@@ -6,6 +6,7 @@ from views.post_request import delete_post, get_all_posts, get_post_category, ge
 from views.category_request import delete_category, create_category, get_all_categories, get_single_category
 from views.tags_request import create_tag, get_all_tags, get_single_tag, delete_tag
 from views.user_request import create_user, login_user, get_all_users, get_single_user
+from views.comments_request import create_comment, delete_comment, get_all_comments, get_single_comment
 
 class HandleRequests(BaseHTTPRequestHandler):
     """Handles the requests to this server"""
@@ -70,6 +71,8 @@ class HandleRequests(BaseHTTPRequestHandler):
             response = create_post(post_body)
         if resource == 'tags':
             response = create_tag(post_body)
+        if resource == "comments":
+            response = create_comment(post_body)
 
         self.wfile.write(response.encode())
 
@@ -107,7 +110,12 @@ class HandleRequests(BaseHTTPRequestHandler):
                 if id is not None:
                     response = f"{get_single_tag(id)}"
                 else:
-                    response = f"{get_all_tags()}"       
+                    response = f"{get_all_tags()}" 
+            if resource == "comments":
+                if id is not None:
+                    response = f"{get_single_comment(id)}"  
+                else:
+                    response = f"{get_all_comments()}"    
                     
         elif len(parsed) == 3:
             ( resource, key, value ) = parsed
@@ -139,6 +147,8 @@ class HandleRequests(BaseHTTPRequestHandler):
             delete_category(id)
         if resource == "tags":
             delete_tag(id)
+        if resource =="comments":
+            delete_comment(id)
         
 
     # Encode the new animal and send in response
