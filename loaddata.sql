@@ -20,7 +20,6 @@ CREATE TABLE "DemotionQueue" (
   PRIMARY KEY (action, admin_id, approver_one_id)
 );
 
-
 CREATE TABLE "Subscriptions" (
   "id" INTEGER PRIMARY KEY AUTOINCREMENT,
   "follower_id" INTEGER,
@@ -84,48 +83,27 @@ CREATE TABLE "Categories" (
   "label" varchar
 );
 
-DROP TABLE "Categories"
-
-
-
 INSERT INTO Categories ('label') VALUES ('News');
+INSERT INTO Categories ('label') VALUES ('Fiction');
+INSERT INTO Categories ('label') VALUES ('Biography');
+INSERT INTO Categories ('label') VALUES ('Self Improvement');
 INSERT INTO Categories ('label') VALUES ('Sports');
 INSERT INTO Categories ('label') VALUES ('Horror');
 INSERT INTO Categories ('label') VALUES ('Comedy');
-INSERT INTO Categories ('label') VALUES ('Drama');
-
-
-        SELECT ------- this grabs data for ticket 14 test in postman
-            p.id,
-            p.user_id,
-            p.category_id,
-            p.title,
-            p.publication_date,
-            p.image_url,
-            p.content,
-            p.approved,
-            c.label category_label
-            FROM posts p 
-            JOIN  Categories c 
-            ON c.id = p.category_id
-
-
-
-DROP TABLE POSTS
-DROP TABLE USERS
-
+INSERT INTO Categories ('label') VALUES ('Religious');
+INSERT INTO Categories ('label') VALUES ('Juvenile Fiction');
+INSERT INTO Categories ('label') VALUES ('Delete me first');
+INSERT INTO Categories ('label') VALUES ('Delete me second');
+INSERT INTO Categories ('label') VALUES ('Delete me third');
+INSERT INTO Categories ('label') VALUES ('Delete me fourth');
+INSERT INTO Categories ('label') VALUES ('Delete me fifth');
+INSERT INTO Categories ('label') VALUES ('Delete me sixth');
 
 INSERT INTO Tags ('label') VALUES ('JavaScript');
 INSERT INTO Reactions ('label', 'image_url') VALUES ('happy', 'https://pngtree.com/so/happy');
 INSERT INTO Posts ('user_id', 'category_id', 'title', 'publication_date', 'image_url', 'content', 'approved') VALUES ( 1 , 1, 'Guest', '10/12/2019', 'https://pngtree.com/so/happy', 'Random', 0);
 INSERT INTO Posts ('user_id', 'category_id', 'title', 'publication_date', 'image_url', 'content', 'approved') VALUES ( 1 , 2, 'Soccer', '10/14/2019', 'https://pngtree.com/so/happy', 'About Sports', 1);
 INSERT INTO Posts ('user_id', 'category_id', 'title', 'publication_date', 'image_url', 'content', 'approved') VALUES ( 1 , 2, 'Drama!', '10/15/2019', 'https://pngtree.com/so/happy', 'About Drama', 1);
-
-
-
-
-
-
 
 INSERT INTO Users (first_name, last_name, email, bio, username, password, created_on, active)
 VALUES ('Shelby', "Rossi", 'rossi@shelby.com', 'random', 'shelbyrossi', 'password', CURRENT_TIMESTAMP, 1);
