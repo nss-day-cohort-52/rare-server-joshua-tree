@@ -2,7 +2,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 
 from views.category_request import delete_category, get_all_categories, get_single_category
-from views.post_request import delete_post, get_all_posts, get_single_post, get_posts_by_current_user
+from views.post_request import delete_post, get_all_posts, get_single_post, get_posts_by_current_user, create_post
 from views.tags_request import create_tag, get_all_tags, get_single_tag, delete_tag
 from views.user_request import create_user, login_user, get_all_users, get_single_user
 
