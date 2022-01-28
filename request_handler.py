@@ -1,10 +1,10 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
+
 from views.category_request import delete_category, get_all_categories, get_single_category
-from views.post_request import delete_post, get_all_posts, get_single_post, get_posts_by_current_user
+from views.post_request import delete_post, get_all_posts, get_single_post, get_posts_by_current_user, create_post
 from views.tags_request import create_tag, get_all_tags, get_single_tag, delete_tag
 from views.user_request import create_user, login_user, get_all_users, get_single_user
-
 
 class HandleRequests(BaseHTTPRequestHandler):
     """Handles the requests to this server"""
@@ -51,7 +51,6 @@ class HandleRequests(BaseHTTPRequestHandler):
                          'X-Requested-With, Content-Type, Accept')
         self.end_headers()
 
-
     def do_POST(self):
         """Make a post request to the server"""
         self._set_headers(201)
@@ -59,11 +58,13 @@ class HandleRequests(BaseHTTPRequestHandler):
         post_body = json.loads(self.rfile.read(content_len))
         response = ''
         (resource, _) = self.parse_url(self.path)
-
+        print(resource)
         if resource == 'login':
             response = login_user(post_body)
         if resource == 'register':
             response = create_user(post_body)
+        if resource == 'posts':
+            response = create_post(post_body)
         if resource == 'tags':
             response = create_tag(post_body)
 
@@ -73,7 +74,6 @@ class HandleRequests(BaseHTTPRequestHandler):
         """Handles PUT requests to the server"""
         pass
 
-    
     def do_GET(self):
         self._set_headers(200)
 
@@ -83,7 +83,7 @@ class HandleRequests(BaseHTTPRequestHandler):
         parsed = self.parse_url(self.path)
 
         if len(parsed) == 2:
-            ( resource, id ) = parsed
+            (resource, id) = parsed
 
             if resource == "posts":
                 if id is not None:
@@ -114,7 +114,7 @@ class HandleRequests(BaseHTTPRequestHandler):
             # email as a filtering value?
             if key == "user_id" and resource == "posts":
                 response = get_posts_by_current_user(value)
-        
+
         self.wfile.write(response.encode())
         
         
@@ -136,6 +136,7 @@ class HandleRequests(BaseHTTPRequestHandler):
 
     # Encode the new animal and send in response
         self.wfile.write("".encode())
+
 
 
 def main():
