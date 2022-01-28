@@ -78,7 +78,6 @@ def create_tag(new_tag):
         VALUES
         (?);
         """,(new_tag['label'],))
-       
 
         id = db_cursor.lastrowid
         new_tag['id'] = id
