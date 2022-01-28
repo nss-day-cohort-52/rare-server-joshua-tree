@@ -175,8 +175,14 @@ VALUES (1, 3, 'Aim High: My Life in the Air Force', CURRENT_TIMESTAMP, 'https://
 INSERT INTO Posts (user_id, category_id, title, publication_date, image_url, content)
 VALUES (1, 3, 'It Happened One Starry Night: How I Became Rich Selling Art Supplies', CURRENT_TIMESTAMP, 'https://www.vangoghexhibit.ca/wp-content/uploads/2020/10/84366-1.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
 
+
+INSERT INTO Posts (user_id, category_id, title, publication_date, image_url, content, approved)
+VALUES (1, 5, 'lovely night', CURRENT_TIMESTAMP, ' https://i.pinimg.com/236x/1f/42/fa/1f42faffb3042d44955133e730320eea--night-sky-stars-night-skies.jpg', 'Walking away', 1)
+
+
 INSERT INTO Posts (user_id, category_id, title, publication_date, image_url, content)
 VALUES (1, 4, 'Watch What You Eat: A Diet You Can Live By', CURRENT_TIMESTAMP, 'https://www.ezcater.com/wp-content/uploads/2018/07/Restrictions-infographic.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
 
 INSERT INTO Posts (user_id, category_id, title, publication_date, image_url, content)
 VALUES (1, 3, 'Time in the Sandbox: A soldier''s Life', CURRENT_TIMESTAMP, 'https://images03.military.com/sites/default/files/2020-10/Army%20Europe%20Deployment%20Training%201800.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
+

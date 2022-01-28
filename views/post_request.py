@@ -1,7 +1,7 @@
 import sqlite3
 import json
 from models import Post, Category, User
-        
+
 def get_all_posts():
     # Open a connection to the database
     with sqlite3.connect("./db.sqlite3") as conn:
@@ -39,28 +39,28 @@ def get_all_posts():
             ORDER BY p.publication_date DESC
         """)
 
-
         posts = []
 
         dataset = db_cursor.fetchall()
 
         for row in dataset:
-            
-            post = Post(row['id'], row['user_id'], row['category_id'],
-                            row['title'], row['publication_date'], row['image_url'], row['content'], row['approved'] )
 
-            
-            user = User(row['id'], row['user_first_name'], row['user_last_name'], row['user_email'], row['user_bio'], row['user_username'], row['user_password'], row['user_user_profile_image_url'], row['user_created_on'], row['user_active'])
-            
+            post = Post(row['id'], row['user_id'], row['category_id'],
+                        row['title'], row['publication_date'], row['image_url'], row['content'], row['approved'])
+
+            user = User(row['id'], row['user_first_name'], row['user_last_name'], row['user_email'], row['user_bio'],
+                        row['user_username'], row['user_password'], row['user_user_profile_image_url'], row['user_created_on'], row['user_active'])
+
             post.user = user.__dict__
 
             category = Category(row['id'], row['category_label'])
-            
+
             post.category = category.__dict__
-            
+
             posts.append(post.__dict__)
-            
+
     return json.dumps(posts)
+
 
 def get_single_post(id):
     with sqlite3.connect("./db.sqlite3") as conn:
@@ -95,25 +95,51 @@ def get_single_post(id):
         JOIN Users user
             ON user.id = p.user_id
         WHERE p.id = ?
-        """, ( id, ))
+        """, (id, ))
 
         # Load the single result into memory
         data = db_cursor.fetchone()
 
         # Create an animal instance from the current row
         post = Post(data['id'], data['user_id'], data['category_id'],
-                            data['title'], data['publication_date'], data['image_url'], data['content'], data['approved'] )
-            
-        user = User(data['id'], data['user_first_name'], data['user_last_name'], data['user_email'], data['user_bio'], data['user_username'], data['user_password'], data['user_profile_image_url'], data['user_created_on'], data['user_active'])
-            
+                    data['title'], data['publication_date'], data['image_url'], data['content'], data['approved'])
+
+        user = User(data['id'], data['user_first_name'], data['user_last_name'], data['user_email'], data['user_bio'],
+                    data['user_username'], data['user_password'], data['user_profile_image_url'], data['user_created_on'], data['user_active'])
+
         post.user = user.__dict__
-        
+
         category = Category(data['id'], data['category_label'])
-            
-        post.category = category.__dict__    
+
+        post.category = category.__dict__
 
         return json.dumps(post.__dict__)
-    
+
+def create_post(new_post):
+    with sqlite3.connect("./db.sqlite3") as conn:
+        conn.row_factory = sqlite3.Row
+        db_cursor = conn.cursor()
+
+        db_cursor.execute("""
+            INSERT INTO Posts
+                ( user_id, category_id, title, publication_date, image_url, content, approved )
+            VALUES
+                ( ?, ?, ?, ?, ?, ?, ?);
+            """, (new_post['user_id'], new_post['category_id'],
+                  new_post['title'], new_post['publication_date'],
+                  new_post['image_url'], new_post['content'], new_post['approved'], ))
+
+        # The `lastrowid` property on the cursor will return
+        # the primary key of the last thing that got added to
+        # the database.
+        id = db_cursor.lastrowid
+
+        # Add the `id` property to the post dictionary that
+        # was sent by the client so that the client sees the
+        # primary key in the response.
+        new_post['id'] = id
+
+        return json.dumps(new_post)
     
 def delete_post(id):
     with sqlite3.connect("./db.sqlite3") as conn:
