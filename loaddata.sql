@@ -84,7 +84,7 @@ CREATE TABLE "Categories" (
   "label" varchar
 );
 
-DROP TABLE "Categories"
+
 
 
 
@@ -95,24 +95,9 @@ INSERT INTO Categories ('label') VALUES ('Comedy');
 INSERT INTO Categories ('label') VALUES ('Drama');
 
 
-        SELECT ------- this grabs data for ticket 14 test in postman
-            p.id,
-            p.user_id,
-            p.category_id,
-            p.title,
-            p.publication_date,
-            p.image_url,
-            p.content,
-            p.approved,
-            c.label category_label
-            FROM posts p 
-            JOIN  Categories c 
-            ON c.id = p.category_id
 
 
 
-DROP TABLE POSTS
-DROP TABLE USERS
 
 
 INSERT INTO Tags ('label') VALUES ('JavaScript');
@@ -161,15 +146,15 @@ content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusm
 WHERE id IS 1;
 
 INSERT INTO Posts (user_id, category_id, title, publication_date, image_url, content, approved)
-VALUES (3, 1, 'My Life With Igor', CURRENT_TIMESTAMP, 'https://www.intofilm.org/intofilm-production/scaledcropped/970x546https%3A/s3-eu-west-1.amazonaws.com/images.cdn.filmclub.org/film__4502-igor--hi_res-c5cc097d.jpg/film__4502-igor--hi_res-c5cc097d.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1);
+VALUES (1, 1, 'My Life With Igor', CURRENT_TIMESTAMP, 'https://www.intofilm.org/intofilm-production/scaledcropped/970x546https%3A/s3-eu-west-1.amazonaws.com/images.cdn.filmclub.org/film__4502-igor--hi_res-c5cc097d.jpg/film__4502-igor--hi_res-c5cc097d.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1);
 
 INSERT INTO Posts (user_id, category_id, title, publication_date, image_url, content, approved)
-VALUES (4, 2, 'How To Serve Your Fellow Man', CURRENT_TIMESTAMP, 'https://mediaproxy.salon.com/width/1200/https://media.salon.com/2012/06/cannibal_rect.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. ',0);
+VALUES (2, 2, 'How To Serve Your Fellow Man', CURRENT_TIMESTAMP, 'https://mediaproxy.salon.com/width/1200/https://media.salon.com/2012/06/cannibal_rect.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. ',0);
 
 INSERT INTO Posts (user_id, category_id, title, publication_date, image_url, content, approved)
-VALUES (5, 3, 'Sitting on the Beach', CURRENT_TIMESTAMP, 'https://www.abc.net.au/news/image/10391728-16x9-940x529.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',1);
+VALUES (2, 3, 'Sitting on the Beach', CURRENT_TIMESTAMP, 'https://www.abc.net.au/news/image/10391728-16x9-940x529.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',1);
 
-drop table posts
+
 
  SELECT
             p.id,
