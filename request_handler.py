@@ -1,9 +1,10 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
-from views.category_request import get_all_categories, get_single_category
-from views.post_request import get_all_posts, get_single_post, create_post
-from views.user import create_user, login_user
 
+from views.category_request import delete_category, get_all_categories, get_single_category
+from views.post_request import delete_post, get_all_posts, get_single_post, get_posts_by_current_user
+from views.tags_request import create_tag, get_all_tags, get_single_tag, delete_tag
+from views.user_request import create_user, login_user, get_all_users, get_single_user
 
 class HandleRequests(BaseHTTPRequestHandler):
     """Handles the requests to this server"""
@@ -64,15 +65,13 @@ class HandleRequests(BaseHTTPRequestHandler):
             response = create_user(post_body)
         if resource == 'posts':
             response = create_post(post_body)
+        if resource == 'tags':
+            response = create_tag(post_body)
 
         self.wfile.write(response.encode())
 
     def do_PUT(self):
         """Handles PUT requests to the server"""
-        pass
-
-    def do_DELETE(self):
-        """Handle DELETE Requests"""
         pass
 
     def do_GET(self):
@@ -96,8 +95,48 @@ class HandleRequests(BaseHTTPRequestHandler):
                     response = f"{get_single_category(id)}"
                 else:
                     response = f"{get_all_categories()}"
+            if resource == "users":
+                if id is not None:
+                    response = f"{get_single_user(id)}"
+                else:
+                    response = f"{get_all_users()}"
+            if resource == "tags":
+                if id is not None:
+                    response = f"{get_single_tag(id)}"
+                else:
+                    response = f"{get_all_tags()}"       
+                    
+        elif len(parsed) == 3:
+            ( resource, key, value ) = parsed
+
+            # Is the resource `customers` and was there a
+            # query parameter that specified the customer
+            # email as a filtering value?
+            if key == "user_id" and resource == "posts":
+                response = get_posts_by_current_user(value)
 
         self.wfile.write(response.encode())
+        
+        
+    def do_DELETE(self):
+        # Set a 204 response code
+        self._set_headers(204)
+
+    # Parse the URL
+        (resource, id) = self.parse_url(self.path)
+
+    # Delete a single animal from the list
+        if resource == "posts":
+            delete_post(id)
+        if resource == "categories":
+            delete_category(id)
+        if resource == "tags":
+            delete_tag(id)
+        
+
+    # Encode the new animal and send in response
+        self.wfile.write("".encode())
+
 
 
 def main():

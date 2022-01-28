@@ -5,7 +5,7 @@ from models import Subscription
 
 def get_all_subscriptions():
     # Open a connection to the database
-    with sqlite3.connect("./kennel.sqlite3") as conn:
+    with sqlite3.connect("./db.sqlite3") as conn:
 
         # Just use these. It's a Black Box.
         conn.row_factory = sqlite3.Row
